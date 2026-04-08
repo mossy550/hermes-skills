@@ -1,0 +1,92 @@
+{
+  "name": "open-multi-agent-framework",
+  "version": "1.0.0",
+  "description": "TypeScript 多智能体编排框架 —— 一次 runTeam() 调用从目标到结果。支持自动任务分解、并行执行、多模型混合、结构化输出、任务重试、循环检测。本地模型（Ollama/vLLM）无需 API key。",
+  "author": "JackChen-me",
+  "license": "MIT",
+  "homepage": "https://github.com/JackChen-me/open-multi-agent",
+  "repository": "https://github.com/JackChen-me/open-multi-agent",
+  "keywords": [
+    "multi-agent",
+    "agent-framework",
+    "typescript",
+    "orchestration",
+    "claude",
+    "openai",
+    "ollama",
+    "llm"
+  ],
+  "openclaw": {
+    "category": "ai-agent",
+    "compatibility": "node>=18",
+    "minOpenClawVersion": "1.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0",
+    "openai": "^4.73.0",
+    "zod": "^3.23.0"
+  },
+  "optionalDependencies": {
+    "@google/genai": "^1.48.0"
+  },
+  "installCommand": "npm install @jackchen_me/open-multi-agent",
+  "envVars": {
+    "ANTHROPIC_API_KEY": "可选（使用 Claude 时）",
+    "OPENAI_API_KEY": "可选（使用 GPT 时）",
+    "GEMINI_API_KEY": "可选（使用 Gemini 时）",
+    "XAI_API_KEY": "可选（使用 Grok 时）",
+    "GITHUB_TOKEN": "可选（使用 Copilot 时）"
+  },
+  "examples": [
+    {
+      "name": "单智能体",
+      "file": "01-single-agent.ts",
+      "description": "runAgent() 单次调用"
+    },
+    {
+      "name": "团队协作",
+      "file": "02-team-collaboration.ts",
+      "description": "runTeam() 自动编排多智能体"
+    },
+    {
+      "name": "任务管道",
+      "file": "03-task-pipeline.ts",
+      "description": "runTasks() 显式依赖图"
+    },
+    {
+      "name": "多模型混合",
+      "file": "04-multi-model-team.ts",
+      "description": "混合 Anthropic + OpenAI + 自定义工具"
+    },
+    {
+      "name": "本地模型",
+      "file": "06-local-model.ts",
+      "description": "Ollama + Claude 混合管道"
+    },
+    {
+      "name": "结构化输出",
+      "file": "09-structured-output.ts",
+      "description": "Zod Schema 约束输出"
+    },
+    {
+      "name": "任务重试",
+      "file": "10-task-retry.ts",
+      "description": "maxRetries + 指数退避"
+    },
+    {
+      "name": "可观测性追踪",
+      "file": "11-trace-observability.ts",
+      "description": "onTrace 回调"
+    }
+  ],
+  "notes": [
+    "纯本地框架可通过 Ollama/vLLM 实现完全不依赖外部 API",
+    "支持自定义工具 defineTool() + Zod Schema",
+    "内置 5 个工具：bash, file_read, file_write, file_edit, grep",
+    "支持工具预设：readonly, readwrite, full",
+    "支持生命周期钩子：beforeRun / afterRun",
+    "支持循环检测防止智能体卡死",
+    "支持人工审批：onApproval 回调",
+    "支持 Human-in-the-Loop"
+  ]
+}

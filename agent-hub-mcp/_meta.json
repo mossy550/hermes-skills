@@ -1,0 +1,54 @@
+{
+  "name": "agent-hub-mcp",
+  "version": "1.0.0",
+  "description": "通用多智能体协调平台，通过 MCP 协议实现任意 AI 智能体之间的协作通信、消息传递和任务协调",
+  "author": "gilbarbara",
+  "license": "MIT",
+  "homepage": "https://github.com/gilbarbara/agent-hub-mcp",
+  "repository": "https://github.com/gilbarbara/agent-hub-mcp",
+  "keywords": [
+    "mcp",
+    "multi-agent",
+    "coordination",
+    "collaboration",
+    "ai-agents"
+  ],
+  "openclaw": {
+    "category": "mcp-integration",
+    "compatibility": "openclaw>=1.0.0",
+    "mcpServer": true
+  },
+  "requirements": {
+    "node": ">=22.0.0",
+    "npm": null
+  },
+  "install": {
+    "global": "npm install -g agent-hub-mcp",
+    "npx": "npx -y agent-hub-mcp@latest"
+  },
+  "dependencies": [],
+  "tools": [
+    "register_agent",
+    "send_message",
+    "get_messages",
+    "get_hub_status",
+    "sync",
+    "create_feature",
+    "create_task",
+    "create_subtask",
+    "accept_delegation",
+    "update_subtask",
+    "get_features",
+    "get_feature",
+    "get_agent_workload"
+  ],
+  "resources": [
+    "agent-hub://messages/{agentId}",
+    "agent-hub://agents/{agentId}",
+    "agent-hub://features/{featureId}",
+    "agent-hub://status"
+  ],
+  "env": {
+    "AGENT_HUB_DATA_DIR": "~/.agent-hub"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "name": "agents-radar",
+  "description": "AI 生态情报聚合 — 每日从 10 个数据源（GitHub/ArXiv/HN/HuggingFace/ProductHunt等）自动抓取并 LLM 摘要，输出双语情报简报。支持 MCP 协议调用和本地安装运行两种接入方式。",
+  "version": "1.0.0",
+  "author": "duanyytop",
+  "homepage": "https://github.com/duanyytop/agents-radar",
+  "license": "MIT",
+  "tags": ["AI", "intelligence", "digest", "GitHub", "ArXiv", "HackerNews", "HuggingFace", "monitoring"],
+  "dependencies": {
+    "runtime": "Node.js >= 18",
+    "npm_packages": [
+      "@anthropic-ai/sdk",
+      "openai",
+      "dotenv",
+      "js-yaml",
+      "marked",
+      "tsx"
+    ]
+  },
+  "env_vars": {
+    "required": ["GITHUB_TOKEN"],
+    "optional": [
+      "ANTHROPIC_API_KEY",
+      "ANTHROPIC_BASE_URL",
+      "ANTHROPIC_MODEL",
+      "OPENAI_API_KEY",
+      "OPENAI_BASE_URL",
+      "OPENAI_MODEL",
+      "OPENROUTER_API_KEY",
+      "LLM_PROVIDER",
+      "TELEGRAM_BOT_TOKEN",
+      "TELEGRAM_CHAT_ID",
+      "FEISHU_WEBHOOK_URL",
+      "PRODUCTHUNT_TOKEN",
+      "DIGEST_REPO"
+    ]
+  },
+  "mcp_server": "https://agents-radar-mcp.duanyytop.workers.dev",
+  "mcp_tools": [
+    "list_reports",
+    "get_latest",
+    "get_report",
+    "search"
+  ],
+  "data_sources": [
+    "GitHub Repos (17+ AI tools)",
+    "Claude Code Skills",
+    "GitHub Trending",
+    "Hacker News (Algolia)",
+    "Product Hunt (GraphQL)",
+    "ArXiv",
+    "HuggingFace Hub",
+    "Dev.to",
+    "Lobste.rs",
+    "Anthropic官网",
+    "OpenAI官网"
+  ],
+  "output_formats": [
+    "Markdown (ZH/EN)",
+    "GitHub Issue",
+    "RSS (feed.xml)",
+    "Telegram notification",
+    "Feishu Webhook card"
+  ],
+  "schedules": {
+    "daily": "08:00 CST",
+    "weekly": "Monday 09:00 CST",
+    "monthly": "1st of month 10:00 CST"
+  }
+}
